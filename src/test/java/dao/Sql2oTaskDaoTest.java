@@ -10,6 +10,7 @@ import org.sql2o.Sql2o; //must be sql2o class conn
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 public class Sql2oTaskDaoTest {
     private Sql2oTaskDao taskDao;
@@ -33,15 +34,15 @@ public class Sql2oTaskDaoTest {
 
     @Test
     public void addingCourseSetsId() throws Exception {
-        Task task = new Task("mow the lawn");
+        Task task = new Task("mow the lawn", 1);
         int originalTaskId = task.getId();
         taskDao.add(task);
         assertNotEquals(originalTaskId, task.getId());
     }
 
     @Test
-    public void existingTAsksCanBeFoundById() throws Exception {
-        Task task = new Task("mow the law");
+    public void existingTasksCanBeFoundById() throws Exception {
+        Task task = new Task("mow the lawn", 1);
         taskDao.add(task); //add to dao (takes care of saving)
         Task foundTask = taskDao.findById(task.getId()); //retrieve
         assertEquals(task, foundTask); //should be the same
@@ -54,8 +55,8 @@ public class Sql2oTaskDaoTest {
 
     @Test
     public void getAll_returnsAllInstancesOfTask_true() throws Exception {
-        Task task = new Task("chore");
-        Task otherTask = new Task("another chore");
+        Task task = new Task("chore", 1);
+        Task otherTask = new Task("another chore", 1);
         taskDao.add(task);
         taskDao.add(otherTask);
         assertEquals(2, taskDao.getAll().size());
@@ -63,7 +64,7 @@ public class Sql2oTaskDaoTest {
 
     @Test
     public void updateTask() throws Exception {
-        Task task = new Task("some chore");
+        Task task = new Task("some chore", 1);
         taskDao.add(task);
         taskDao.update(task.getId(), "test");
         Task updatedTask = taskDao.findById(task.getId());
@@ -72,7 +73,7 @@ public class Sql2oTaskDaoTest {
 
     @Test
     public void deleteById() throws Exception {
-        Task task = new Task("test1");
+        Task task = new Task("test1", 1);
         taskDao.add(task);
         taskDao.deleteById(task.getId());
         assertEquals(0, taskDao.getAll().size());
@@ -81,11 +82,19 @@ public class Sql2oTaskDaoTest {
 
     @Test
     public void clearAllTasks() throws Exception {
-        Task task = new Task("do a thing");
-        Task otherTask = new Task("do another thing");
+        Task task = new Task("do a thing", 1);
+        Task otherTask = new Task("do another thing", 1);
         taskDao.add(task);
         taskDao.add(otherTask);
         taskDao.clearAllTasks();
         assertEquals(0, taskDao.getAll().size());
+    }
+
+    @Test
+    public void categoryIdISREtrunedCorreclty() throws Exception {
+        Task task = new Task("mop the floor", 1);
+        int origininalCatId = task.getCategoryId();
+        taskDao.add(task);
+        assertEquals(origininalCatId, taskDao.findById(task.getId()).getCategoryId());
     }
 }

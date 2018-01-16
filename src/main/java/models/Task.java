@@ -9,35 +9,54 @@ public class Task {
     private boolean completed;
     private LocalDateTime createdAt;
     private int id;
+    private int categoryId;
 
-    public Task(String description){
+    public Task(String description, int categoryId){
         this.description = description;
         this.completed = false;
         this.createdAt = LocalDateTime.now();
-    }
+        this.categoryId = categoryId;
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public boolean getCompleted(){
-        return this.completed;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     @Override
@@ -49,6 +68,7 @@ public class Task {
 
         if (completed != task.completed) return false;
         if (id != task.id) return false;
+        if (categoryId != task.categoryId) return false;
         return description.equals(task.description);
     }
 
@@ -57,6 +77,7 @@ public class Task {
         int result = description.hashCode();
         result = 31 * result + (completed ? 1 : 0);
         result = 31 * result + id;
+        result = 31 * result + categoryId;
         return result;
     }
 }
