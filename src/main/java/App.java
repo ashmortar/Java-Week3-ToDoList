@@ -15,7 +15,7 @@ public class App {
 
         get("/tasks/delete", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            Task.clearAllTasks();
+            //Task.clearAllTasks();
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -39,8 +39,8 @@ public class App {
         //get: show all tasks
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            ArrayList<Task> tasks = Task.getAll();
-            model.put("tasks", tasks);
+            //ArrayList<Task> tasks = Task.getAll();
+           // model.put("tasks", tasks);
 
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
@@ -49,8 +49,8 @@ public class App {
         get("/tasks/:id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfTaskToFind = Integer.parseInt(req.params("id")); //pull id - must match route segment
-            Task foundTask = Task.findById(idOfTaskToFind); //use it to find task
-            model.put("task", foundTask); //add it to model for template to display
+            //Task foundTask = Task.findById(idOfTaskToFind); //use it to find task
+            //model.put("task", foundTask); //add it to model for template to display
             return new ModelAndView(model, "task-detail.hbs"); //individual task page.
         }, new HandlebarsTemplateEngine());
 
@@ -58,8 +58,8 @@ public class App {
         get("/tasks/:id/update", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfTaskToEdit = Integer.parseInt(req.params("id"));
-            Task editTask = Task.findById(idOfTaskToEdit);
-            model.put("editTask", editTask);
+            //Task editTask = Task.findById(idOfTaskToEdit);
+            //model.put("editTask", editTask);
             return new ModelAndView(model, "task-form.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -68,8 +68,8 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             String newContent = req.queryParams("description");
             int idOfTaskToEdit = Integer.parseInt(req.params("id"));
-            Task editTask = Task.findById(idOfTaskToEdit);
-            editTask.update(newContent);
+//            Task editTask = Task.findById(idOfTaskToEdit);
+//            editTask.update(newContent);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -77,8 +77,8 @@ public class App {
         get("/tasks/:id/delete", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfTaskToDelete = Integer.parseInt(req.params("id")); //pull id - must match route segment
-            Task deleteTask = Task.findById(idOfTaskToDelete); //use it to find task
-            deleteTask.deleteTask();
+//            Task deleteTask = Task.findById(idOfTaskToDelete); //use it to find task
+//            deleteTask.deleteTask();
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
