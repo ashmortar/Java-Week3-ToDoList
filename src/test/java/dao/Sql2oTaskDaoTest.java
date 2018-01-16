@@ -60,4 +60,32 @@ public class Sql2oTaskDaoTest {
         taskDao.add(otherTask);
         assertEquals(2, taskDao.getAll().size());
     }
+
+    @Test
+    public void updateTask() throws Exception {
+        Task task = new Task("some chore");
+        taskDao.add(task);
+        taskDao.update(task.getId(), "test");
+        Task updatedTask = taskDao.findById(task.getId());
+        assertEquals("test", updatedTask.getDescription());
+    }
+
+    @Test
+    public void deleteById() throws Exception {
+        Task task = new Task("test1");
+        taskDao.add(task);
+        taskDao.deleteById(task.getId());
+        assertEquals(0, taskDao.getAll().size());
+
+    }
+
+    @Test
+    public void clearAllTasks() throws Exception {
+        Task task = new Task("do a thing");
+        Task otherTask = new Task("do another thing");
+        taskDao.add(task);
+        taskDao.add(otherTask);
+        taskDao.clearAllTasks();
+        assertEquals(0, taskDao.getAll().size());
+    }
 }
