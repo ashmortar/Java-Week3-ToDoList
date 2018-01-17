@@ -1,0 +1,13 @@
+{{#partial "content"}}
+    {{#if categories}}
+        {{#each categories}}
+            <p>{{name}}</p>
+            <p><a href="/categories/{{id}}">see a list of tasks</a></p>
+        {{/each}}
+    {{else}}
+        <p>empty</p>
+        <p><a href="/">go back</a></p>
+    {{/if}}
+{{/partial}}
+
+{{> layout.hbs}}

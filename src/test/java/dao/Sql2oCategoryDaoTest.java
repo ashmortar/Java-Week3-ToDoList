@@ -21,6 +21,7 @@ public class Sql2oCategoryDaoTest {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         categoryDao = new Sql2oCategoryDao(sql2o);
+        taskDao = new Sql2oTaskDao(sql2o);
 
         //keep connection open through entire test so it does not get erased
         conn = sql2o.open();
@@ -90,4 +91,21 @@ public class Sql2oCategoryDaoTest {
         assertEquals(0, categoryDao.getAll().size());
     }
 
+    @Test
+    public void getAllTasksByCategoryReturnsTasksCorrectly() throws Exception {
+        Category category = new Category("work");
+        categoryDao.add(category);
+        int categoryId = category.getId();
+        Task newTask = new Task("mow the lawn", categoryId);
+        Task otherTask = new Task("pull weeds", categoryId);
+        Task thirdTask = new Task("trim hedge", categoryId);
+        taskDao.add(newTask);
+        taskDao.add(otherTask); //we are not adding task 3 so we can test things precisely.
+
+
+        assertTrue(categoryDao.getAllTasksByCategory(categoryId).size() == 2);
+        assertTrue(categoryDao.getAllTasksByCategory(categoryId).contains(newTask));
+        assertTrue(categoryDao.getAllTasksByCategory(categoryId).contains(otherTask));
+        assertFalse(categoryDao.getAllTasksByCategory(categoryId).contains(thirdTask)); //things are accurate!
+    }
 }

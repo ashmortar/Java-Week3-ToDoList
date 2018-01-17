@@ -1,0 +1,15 @@
+{{#partial "content"}}
+    {{#if editCategory}}
+        <form action="/categories/{{editCategory.id}}/update" method="post" id="form">
+            <label for="categoryName">Category name: </label>
+            <input name="categoryName" value="{{editCategory.name}}">
+    {{else}}
+    <form action="/categories/new" method="post" id="form">
+        <label for="categoryName">Category name: </label>
+        <input name="categoryName">
+    {{/if}}
+        <button type="submit">save</button>
+    </form>
+{{/partial}}
+
+{{> layout.hbs}}

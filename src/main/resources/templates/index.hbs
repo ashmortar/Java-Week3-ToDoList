@@ -2,14 +2,17 @@
 
     <h1> List o' stuff to do!</h1>
 
-    {{#if tasks}}
-        {{#each tasks }}
-         <p>Current task:</p>
-         <p>{{ description }} <a href="/tasks/{{id}}">read more...</a></p>
-        {{/each}}
-    {{else}}
-     <p>No tasks!</p>
-    {{/if}}
+    <!--{{#if tasks}}-->
+        <!--{{#each tasks }}-->
+         <!--<p>Current task:</p>-->
+         <!--<p>{{ description }} <a href="/tasks/{{id}}">read more...</a></p>-->
+        <!--{{/each}}-->
+    <!--{{else}}-->
+     <!--<p>No tasks!</p>-->
+    <!--{{/if}}-->
+    <p><a href="/categories">Show lists</a></p>
+    <p><a href="/categories/new">Add a new category</a></p>
+    <p><a href="/tasks/new">Add a new task</a></p>
 {{/partial}}
 
 {{> layout.hbs}}

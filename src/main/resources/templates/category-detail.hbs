@@ -1,0 +1,13 @@
+{{#partial "content"}}
+    {{#if category}}
+        <h2>{{category.name}}</h2>
+        <ul>
+        {{#each tasksInCategory}}
+            <li>{{description}}</li>
+        {{/each}}
+        </ul>
+        <p><a href="/categories/{{category.id}}/update">update category name</a></p>
+    {{/if}}
+{{/partial}}
+
+{{> layout.hbs}}
