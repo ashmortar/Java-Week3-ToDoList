@@ -1,18 +1,31 @@
 {{#partial "content"}}
 
-    <h1> List o' stuff to do!</h1>
+    <!--//welcome page-->
+    <h3><em>T h e - T o D o L i s t - I s - H e r e - T o - H e l p</em></h3>
+    <hr>
+    <ul>
+    <em>
+    <li><a href="/categories">manage</a> your lists</li>
+        <ul>
+            <li>add tasks to a list</li>
+            <li>see all incomplete tasks in a list</li>
+            <li>see all completed tasks (wooo!)</li>
+            <li>remove or update a list</li>
+        </ul>
+    <li><a href="/categories/new">create</a> new lists</li>
+    </ul>
+    </em>
+    <!--//nav links:-->
+    <!--//  -where you can go-->
+    <!--//      -see all lists created so you can manage them 1 at a time-->
+    <!--//              -select a single list and see all tasks for category-->
+    <!--//                  -add tasks to a list-->
+    <!--//                  -see all completed tasks in a category-->
+    <!--//                  -see all incompleted tasks in a category-->
+    <!--//              -Create new lists of different categories to group similar tasks-->
 
-    <!--{{#if tasks}}-->
-        <!--{{#each tasks }}-->
-         <!--<p>Current task:</p>-->
-         <!--<p>{{ description }} <a href="/tasks/{{id}}">read more...</a></p>-->
-        <!--{{/each}}-->
-    <!--{{else}}-->
-     <!--<p>No tasks!</p>-->
-    <!--{{/if}}-->
-    <p><a href="/categories">Show lists</a></p>
-    <p><a href="/categories/new">Add a new category</a></p>
-    <p><a href="/tasks/new">Add a new task</a></p>
+    <!--//  -what you can do-->
+
 {{/partial}}
 
 {{> layout.hbs}}

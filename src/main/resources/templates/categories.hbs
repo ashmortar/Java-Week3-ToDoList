@@ -1,9 +1,11 @@
 {{#partial "content"}}
     {{#if categories}}
+        <h3><em>L i s t s</em></h3>
+        <ul><em>
         {{#each categories}}
-            <p>{{name}}</p>
-            <p><a href="/categories/{{id}}">see a list of tasks</a></p>
+            <li><a href="/categories/{{id}}">{{name}}</a></p></li>
         {{/each}}
+        </em></ul>
     {{else}}
         <p>empty</p>
         <p><a href="/">go back</a></p>

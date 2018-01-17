@@ -2,13 +2,15 @@
     {{#if editCategory}}
         <form action="/categories/{{editCategory.id}}/update" method="post" id="form">
             <label for="categoryName">Category name: </label>
-            <input name="categoryName" value="{{editCategory.name}}">
+            <input name="categoryName" value="{{editCategory.name}}" class="form-control">
     {{else}}
     <form action="/categories/new" method="post" id="form">
-        <label for="categoryName">Category name: </label>
-        <input name="categoryName">
+        <label for="categoryName"><em>list title</em></label>
+    <br>
+        <input name="categoryName" id="categoryName" class="form-control">
     {{/if}}
-        <button type="submit">save</button>
+    <br>
+        <button type="submit" class="btn btn-default">save</button>
     </form>
 {{/partial}}
 

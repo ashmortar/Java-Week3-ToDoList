@@ -3,20 +3,22 @@
 <head>
     <title>{{#block "title"}}Blog{{/block}}</title>
 
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-<ul class="nav nav-tabs">
-    <li role="presentation"><a href="/">Home</a></li>
-    <li role="presentation"><a href="/tasks/new">Add a New Task</a></li>
-</ul>
-<div class="container">
+<nav class="navbar">
+    <ol class="breadcrumb">
+        <li><a href="/">home</a></li>
+        <li><a href="/categories">lists</a></li>
+        <li><a href="/categories/new">new list</a></li>
+    </ol>
+</nav>
     <!--begin main template-->
+<div class="container">
     <div class="page-header">
-        <img src="/images/rawpixel-com-296621.jpg" width="70%" alt="https://unsplash.com/search/task?photo=Lh_bn9SgRSY">
-        <h1>Welcome to my To Do List. <small>Let's be organized, focused, and efficient.</small></h1>
+        <h1><em>T o D o L i s t</em></h1>
+        <p>STAY ORGANIZED  //  BE PRODUCTIVE</p>
     </div>
-
     <div class="col-md-12">
         {{#block "content"}}
         {{/block}}
@@ -25,11 +27,7 @@
 </div>
 <!--end main template-->
 {{#block "footer"}}
-    <footer class="footer">
-        <div class="container">
-            <p class="text-muted"><a href="/tasks/delete">DELETE ALL</a></p>
-        </div>
-    </footer>
-    </body>
-    </html>
+
 {{/block}}
+</body>
+</html>
